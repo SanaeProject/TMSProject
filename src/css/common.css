@@ -1,0 +1,157 @@
+/* import google fonts */
+/* h1 Font */
+@import url('https://fonts.googleapis.com/css2?family=Sankofa+Display&display=swap');
+/* h2 Font */
+@import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap');
+/* Content Font */
+@import url('https://fonts.googleapis.com/css2?family=Sawarabi+Gothic&display=swap');
+
+/* debug style 
+* {
+    outline: 1px dashed #f00;
+}
+*/
+
+/* default style */
+html{
+    margin           : 0px;
+    padding          : 0px;
+    box-sizing       : border-box;
+
+    font-size        : 16px;
+    font-family      : "メイリオ", "Meiryo", sans-serif;
+    color            : #333;
+
+    background-color : #fff;
+    line-height      : 1.6;
+    letter-spacing   : 0.05em;
+}
+
+/* body style */
+body{
+    margin  : 0px;
+    padding : 0px;
+}
+
+/* character style */
+h1{
+    font-size   : 3rem;
+    font-weight : bold;
+    font-family : "Sankofa Display", sans-serif;
+    font-style  : normal;
+}
+h2,div.window .title{
+    font-size   : 1.5rem;
+    font-weight : 400;
+    font-family : "Mochiy Pop One", sans-serif;
+    font-style  : normal;
+}
+h3{
+    font-size   : 1.25rem;
+    font-weight : bold;
+}
+h4{
+    font-size   : 1rem;
+    font-weight : bold;
+}
+h5{
+    font-size   : 0.875rem;
+    font-weight : bold;
+}
+p{
+    font-size   : 1rem;
+    font-weight : 400;
+    font-family : "Sawarabi Gothic", sans-serif;
+    font-style  : normal;
+}
+
+div.window{
+    border        : 1px solid #333;
+    border-radius : 0.5rem;
+    padding       : 0px 0.5rem;
+    margin        : 5px;
+}
+div.window .title{
+    width       : 100%;
+    margin      : 0px;
+    border      : none;
+    margin-left : -0.5rem;
+    border-left : 0.5rem solid #333;
+}
+div.window .container{
+    margin-bottom : 20px;
+}
+div.window .container-checklist::before{
+    content:"チェックリスト";
+    font-size   : 1.25rem;
+    font-weight : bold;
+}
+div.window .container-link::before{
+    content:"リンク";
+    font-size   : 1.25rem;
+    font-weight : bold;
+}
+
+div.window .content{
+    border : none;
+    margin : 10px 0px;
+
+    font-size   : 1rem;
+    font-weight : 400;
+    font-family : "Sawarabi Gothic", sans-serif;
+    font-style  : normal;
+}
+
+/* checklist style */
+div.window .checked{
+    text-decoration: line-through;
+}
+div.window .check-row{
+    display     : flex;
+    align-items : center;
+}
+div.window .check-row p,div.window .check-row input{
+    border       : none;
+    margin       : 0px;
+    margin-left  : 10px;
+}
+div.window .check-row .check-box{
+    transform : scale(1.5);
+}
+
+div.window textarea{
+    width  : 100%;
+    resize : vertical;
+}
+
+div.window .edit-btn{
+    display       : inline-block;
+    border-radius : 0.5rem;
+
+    background-color : dodgerblue;
+    color            : #fff;
+    font-size        : 1rem;
+    font-weight      : bold;
+    font-family      : "Sawarabi Gothic", sans-serif;
+    font-style       : normal;
+
+    border           : none;
+    cursor           : pointer;
+    margin-top       : 10px;
+}
+div.window .edit-btn.del-btn{
+    margin-right : 10px;
+}
+div.window .edit-btn.delete-mode{
+    background-color : red;
+}
+div.window .marked-del{
+    accent-color : red;
+}
+
+/* link style */
+div.window .link{
+    display : block;
+    color : dodgerblue;
+}
+

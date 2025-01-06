@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<!-- head start -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>テストページ</title>
+
+    <link rel="stylesheet" href="../css/common.css">
+
+    <meta name="keywords" content="テスト,テスト,テスト">
+    <meta name="description" content="テストページです。">
+    <meta name="author" content="SanaeProject">
+
+    <script src="../JavaScript/ui.js"></script>
+    <script src="../JavaScript/tmsSystem.js"></script>
+</head>
+<!-- head end -->
+
+<!-- body start -->
+<body>
+    <!-- header start -->
+    <header>
+        <h1>SanaeProject</h1>
+    </header>
+    <!-- header end -->
+
+    <!-- main start -->
+    <main>
+        <script>
+            let main = document.querySelector("main");
+            let win = new TaskWindow();
+            win.addContainer(new TitleItem(true,"SanaeProject"));
+            win.addContainer(new ContentItem(true,"SanaeProjectは、SanaeProjectのサイトです。"));
+            win.addContainer(new CheckListItem(true,[["SanaeProject",true],["SanaeProject",false]]));
+            win.addContainer(new LinkItem(true,[["https://www.google.com","Google"],["https://www.yahoo.co.jp","Yahoo"]]));
+            main?.appendChild(win.element);
+
+            setTimeout(() => {
+                document.write(exportTaskWindow(win));
+            }, 1000);
+        </script>
+    </main>
+    <!-- main end -->
+
+    <!-- footer start -->
+    <footer>
+
+    </footer>
+    <!-- footer end -->
+</body>
+<!-- body end -->
+
+</html>
