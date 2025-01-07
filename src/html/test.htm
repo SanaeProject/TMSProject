@@ -35,7 +35,7 @@
             win.addItem(new TitleBlock(true,"SanaeProject"));
             win.addItem(new TextBlock(true,"SanaeProjectは、SanaeProjectのサイトです。"));
             win.addItem(new CheckListBlock(true,[["SanaeProject",true],["SanaeProject",false]]));
-            win.addItem(new LinkBlock(true,[["https://www.google.com","Google"],["https://www.yahoo.co.jp","Yahoo"]]));
+            win.addItem(new LinkBlock(true,[["Google","https://www.google.com"],["https://www.yahoo.co.jp"]]));
             main?.appendChild(win.element);
 
             console.log(exportTaskWindow(win));

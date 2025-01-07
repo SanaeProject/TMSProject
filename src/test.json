@@ -1,0 +1,22 @@
+[
+    {
+        "class":"TitleBlock",
+        "content":"SanaeProject",
+        "canEdit":true
+    },
+    {
+        "class":"TextBlock",
+        "content":"SanaeProjectは、SanaeProjectのサイトです。",
+        "canEdit":true
+    },
+    {
+        "class":"CheckListBlock",
+        "content":[["SanaeProject","true"],["SanaeProject","false"]],
+        "canEdit":true
+    },
+    {
+        "class":"LinkBlock",
+        "content":[["Google","https://www.google.com/"],["Yahoo","https://www.yahoo.co.jp/"]],
+        "canEdit":true
+    }
+]

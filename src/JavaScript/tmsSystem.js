@@ -297,7 +297,7 @@ class CheckListBlock extends Block {
         this.element_.querySelectorAll(".check-row").forEach((row) => {
             const checkBox = row.querySelector(".check-box");
             const textElement = row.querySelector(".check-text");
-            list += `${isFirst ? "" : ","}["${this.canEdit_ ? textElement === null || textElement === void 0 ? void 0 : textElement.value : textElement === null || textElement === void 0 ? void 0 : textElement.textContent}","${checkBox === null || checkBox === void 0 ? void 0 : checkBox.checked}"]`;
+            list += `${isFirst ? "" : ","}["${this.canEdit_ ? textElement === null || textElement === void 0 ? void 0 : textElement.value : textElement === null || textElement === void 0 ? void 0 : textElement.textContent}",${checkBox === null || checkBox === void 0 ? void 0 : checkBox.checked}]`;
             isFirst = false;
         });
         return `{"class":"${this.constructor.name}","content":[${list}],"canEdit":${this.canEdit_}}`;
@@ -386,11 +386,11 @@ class LinkBlock extends Block {
     /**
      * リンクを作成する
      *
-     * @param link リンク
      * @param text リンクの表示名
+     * @param link リンク
      * @returns 作成したリンク
      */
-    createLink(link, text) {
+    createLink(text, link) {
         const linkElement = this.createTextElement("a", text, "link");
         linkElement.href = link;
         return linkElement;
@@ -406,7 +406,7 @@ class LinkBlock extends Block {
             // 正規表現でURLを検証
             const urlPattern = /^(https?:\/\/[^\s/$.?#].[^\s]*)$/i;
             if (urlPattern.test(link)) {
-                this.element_.insertBefore(this.createLink(link, text), this.element_.firstChild);
+                this.element_.insertBefore(this.createLink(text, link), this.element_.firstChild);
             }
             else {
                 alert("リンクが不正です。");
@@ -419,8 +419,15 @@ class LinkBlock extends Block {
      * @param links リンク
      */
     addElement(...links) {
-        links.forEach(([link, text]) => {
-            this.element_.appendChild(this.createLink(link, text));
+        const urlPattern = /^(https?:\/\/[^\s/$.?#].[^\s]*)$/i;
+        links.forEach(([text, link]) => {
+            link = link || text;
+            if (urlPattern.test(link)) {
+                this.element_.appendChild(this.createLink(text, link));
+            }
+            else {
+                alert("リンクが不正です。");
+            }
         });
     }
     /**

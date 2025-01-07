@@ -349,7 +349,7 @@ class CheckListBlock extends Block {
         this.element_.querySelectorAll(".check-row").forEach((row) => {
             const checkBox = row.querySelector<HTMLInputElement>(".check-box");
             const textElement = row.querySelector<HTMLElement>(".check-text");
-            list   += `${isFirst ? "" : ","}["${this.canEdit_ ? (textElement as HTMLInputElement)?.value : textElement?.textContent}","${checkBox?.checked}"]`;
+            list   += `${isFirst ? "" : ","}["${this.canEdit_ ? (textElement as HTMLInputElement)?.value : textElement?.textContent}",${checkBox?.checked}]`;
             isFirst = false;
         });
         return `{"class":"${this.constructor.name}","content":[${list}],"canEdit":${this.canEdit_}}`;
@@ -366,7 +366,7 @@ class LinkBlock extends Block {
      * @param canEdit 編集モード
      * @param links リンク
      */
-    constructor(canEdit: boolean, links: [string, string][] = []) {
+    constructor(canEdit: boolean, links: [text:string, link:string][] = []) {
         super(canEdit);
         this.addElement(...links);
         this.element_.classList.add("link-block-wrapper");
@@ -445,11 +445,11 @@ class LinkBlock extends Block {
     /**
      * リンクを作成する
      * 
-     * @param link リンク
      * @param text リンクの表示名
+     * @param link リンク
      * @returns 作成したリンク
      */
-    private createLink(link: string, text: string): HTMLElement {
+    private createLink(text: string, link: string): HTMLElement {
         const linkElement = this.createTextElement("a", text, "link") as HTMLLinkElement;
         linkElement.href = link;
         return linkElement;
@@ -469,7 +469,7 @@ class LinkBlock extends Block {
             // 正規表現でURLを検証
             const urlPattern = /^(https?:\/\/[^\s/$.?#].[^\s]*)$/i;
             if (urlPattern.test(link)) {
-                this.element_.insertBefore(this.createLink(link, text), this.element_.firstChild);
+                this.element_.insertBefore(this.createLink(text, link), this.element_.firstChild);
             } else {
                 alert("リンクが不正です。");
             }
@@ -482,8 +482,16 @@ class LinkBlock extends Block {
      * @param links リンク
      */
     addElement(...links: [string, string][]): void {
-        links.forEach(([link, text]) => {
-            this.element_.appendChild(this.createLink(link, text));
+        const urlPattern = /^(https?:\/\/[^\s/$.?#].[^\s]*)$/i;
+
+        links.forEach(([text, link]) => {
+            link = link || text;
+            
+            if (urlPattern.test(link)) {
+                this.element_.appendChild(this.createLink(text, link));
+            } else {
+                alert("リンクが不正です。");
+            }
         });
     }
 
@@ -678,7 +686,8 @@ function importTaskWindow(data: string, canEdit: boolean = false): TaskWindow {
     const parsedData = JSON.parse(data) as ContainerData[];
     const blocks = parsedData.map(container => {
         const BlockClass = containerItemList.find(item => item.name === container.class);
-        if (!BlockClass) throw new Error(`Unknown block type: ${container.class}`);
+        if (!BlockClass) 
+            throw new Error(`Unknown block type: ${container.class}`);
         return new BlockClass(container.canEdit, container.content);
     });
     return new TaskWindow(canEdit, blocks);
