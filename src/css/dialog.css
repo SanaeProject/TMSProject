@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap');
+
+.dialog{
+    position         : fixed;
+    top              : 50%;
+    left             : 50%;
+    transform        : translate(-50%, -50%);
+
+    border-radius    : 10px;
+    background-color : white;
+    padding          : 10px;
+    box-shadow       : 0 0 10px 0 rgba(0, 0, 0, 0.5);
+}
+.dialog .title{
+    margin-top    : 0px;
+    margin-bottom : 10px;
+    font-size     : 1.5rem;
+    font-weight   : 400;
+    font-family   : "Mochiy Pop One", sans-serif;
+    font-style    : normal;
+}
+.dialog input{
+    border          : 1px solid #ccc;
+    border-radius   : 0.5rem;
+    padding         : 0.5rem;
+    font-size       : 1rem;
+    font-family     : sans-serif;
+    font-style      : normal;
+}
+.dialog .confirm-button,.dialog .cancel-button{
+    display       : inline-block;
+    border-radius : 0.5rem;
+
+    background-color : dodgerblue;
+    color            : #fff;
+    font-size        : 1rem;
+    font-weight      : bold;
+    font-family      : sans-serif;
+    font-style       : normal;
+
+    border           : none;
+    cursor           : pointer;
+    margin-top       : 10px;
+}

@@ -78,16 +78,22 @@ div.window .title{
     margin-left : -0.5rem;
     border-left : 0.5rem solid #333;
 }
-div.window .container{
+div.window .block-wrapper{
     margin-bottom : 20px;
 }
-div.window .container-checklist::before{
-    content:"チェックリスト";
+div.window .checklist-block-wrapper::before{
+    content     :"チェックリスト";
     font-size   : 1.25rem;
     font-weight : bold;
 }
-div.window .container-link::before{
-    content:"リンク";
+div.window .link-block-wrapper::before{
+    content     :"リンク";
+    font-size   : 1.25rem;
+    font-weight : bold;
+}
+div.window .add-btn-wrapper::before{
+    content     : "ブロックの追加";
+    display     : block;
     font-size   : 1.25rem;
     font-weight : bold;
 }
@@ -149,9 +155,17 @@ div.window .marked-del{
     accent-color : red;
 }
 
+div.window.edit-mode > * {
+    outline: 1px dashed #f00;
+}
+
 /* link style */
 div.window .link{
     display : block;
     color : dodgerblue;
 }
 
+div.window .add-btn-select{
+    display : block;
+    transform : scale(1.5) translateX(20px);
+}

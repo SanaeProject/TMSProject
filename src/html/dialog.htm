@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dialog</title>
+
+    <script src="../JavaScript/dialog.js"></script>
+    <link rel="stylesheet" href="../css/dialog.css">
+</head>
+<body>
+    <script>
+        (async () => {
+            const dialog = new InputDialog("エラーが発生しました。");
+            alert(await dialog.show());
+        })();
+    </script>
+</body>
+</html>

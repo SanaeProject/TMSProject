@@ -30,16 +30,18 @@
     <main>
         <script>
             let main = document.querySelector("main");
-            let win = new TaskWindow();
-            win.addContainer(new TitleItem(true,"SanaeProject"));
-            win.addContainer(new ContentItem(true,"SanaeProjectは、SanaeProjectのサイトです。"));
-            win.addContainer(new CheckListItem(true,[["SanaeProject",true],["SanaeProject",false]]));
-            win.addContainer(new LinkItem(true,[["https://www.google.com","Google"],["https://www.yahoo.co.jp","Yahoo"]]));
+
+            let win = new TaskWindow(true);
+            win.addItem(new TitleBlock(true,"SanaeProject"));
+            win.addItem(new TextBlock(true,"SanaeProjectは、SanaeProjectのサイトです。"));
+            win.addItem(new CheckListBlock(true,[["SanaeProject",true],["SanaeProject",false]]));
+            win.addItem(new LinkBlock(true,[["https://www.google.com","Google"],["https://www.yahoo.co.jp","Yahoo"]]));
             main?.appendChild(win.element);
 
-            setTimeout(() => {
-                document.write(exportTaskWindow(win));
-            }, 1000);
+            console.log(exportTaskWindow(win));
+
+            let win2 = importTaskWindow(exportTaskWindow(win),true);
+            main?.appendChild(win2.element);
         </script>
     </main>
     <!-- main end -->
